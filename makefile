@@ -24,7 +24,6 @@ commit: clean
 	echo "Name this commit"; \
 	read name; \
 	git commit -m "$$name"; \
-	git remote add origin ; \
 	git push -u origin master
 
 clean: FRC
