@@ -9,8 +9,6 @@
 #include <fstream>
 #include <iostream>
 #include <math.h>
-#include <stdint.h>
-#include <sstream>
 
 // types: classes, enums, typedefs
 // only use what we need from standard library
@@ -19,10 +17,6 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::filebuf;
-using std::ifstream;
-using std::ostream;
-using std::string;
-using std::stringstream;
 
 // variables: consts, statics, exported variables (declared extern elsewhere)
 // local forward function declarations
@@ -61,7 +55,7 @@ void sieve::calculate()
 
   uint64_t limit_sqrt = static_cast<int>(sqrt(m_limit));
   uint64_t current = 2;
-  while (current < limit_sqrt) {
+  while (current <= limit_sqrt) {
     // if it's prime then eliminate the multiples of it
     if (m_primes[current]) {
       uint64_t multiple = 2;
@@ -81,7 +75,7 @@ void sieve::calculate()
 }
 
 //=============================================================================
-const uint64_t& sieve::count()
+const uint64_t& sieve::count() const
 //
 //D return how many primes there are less than limit
 //
@@ -127,102 +121,4 @@ void sieve::write_file(const string& file_name) const
   ostream os(&fb);
   print_numbers_stream(os);
   fb.close();
-}
-
-//=============================================================================
-const char sieve::convert_to_text(const int& to_convert) const
-//
-//D
-//
-{
-  // add 33 to the number then convert to ascii
-  return static_cast<char>(to_convert);
-}
-
-//=============================================================================
-const int sieve::convert_from_text(const char& c) const
-//
-//D
-//
-{
-  // convert to int then take 33 away
-  return (static_cast<int>(c));
-}
-
-void print_help(const string& arg_0)
-//
-//D Print the helpfile at the location of the ran exe, passed argument 0
-//
-{
-  string file_location(arg_0, 0, arg_0.find_last_of('/'));
-  file_location.append("/help.txt");
-  ifstream file(file_location.c_str());
-  if (file) {
-    // print the buffer to standard output
-    cout << file.rdbuf();
-    file.close();
-  } else {
-    cerr << "Help file " << file_location << " not found." << endl;
-  }
-}
-
-//=============================================================================
-int main(int num_arguments, char* arguments[])
-//
-//D The entry point and single function of this program
-//
-{
-  // iterate over command line options
-  uint64_t limit = 0;
-  bool read = false;
-  bool numerical = true;
-  bool binary = false;
-  string file = "";
-  for (int i = 1; i < num_arguments; ++i) {
-    string arg = string(arguments[i]);
-    if (arg[0] == '-') {
-
-      if (arg == "-h" || arg == "-help" || arg == "--help") {
-        // help option
-        print_help(arguments[0]);
-        return 0;
-
-      } else if (arg == "-b" || arg == "-binary") {
-        // write in binary
-        binary = true;
-        numerical = false;
-
-      } else if (arg == "-f" || arg == "-file") {
-        // write to a file option
-        if (i + 1 == num_arguments) {
-          cerr << "Need a file name" << endl;
-          return 0;
-        }
-        file = arguments[i+1];
-        ++i;
-
-      } else {
-        cerr << "Unknown option" << endl;
-        print_help(arguments[0]);
-        return 0;
-      }
-    } else {
-      // convert the number into a long integer (sadly 32 bit atm)
-      limit = atol(arg.c_str());
-    }
-  }
-
-  if (limit == 0) {
-    cout << "Enter limit: ";
-    // output as error in case you are piping the output to a file
-    cin >> limit;
-    cout << endl;
-  }
-
-  sieve finder(limit);
-  if (!read) {
-    // output as error in case you are piping the output to a file
-    cout << "Sieve of Eratosthenes array calculated." << endl;
-  }
-  return 0;
 }

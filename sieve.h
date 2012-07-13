@@ -20,17 +20,18 @@
 //
 //=============================================================================
 
-#ifndef _sieve_H
-#define _sieve_H
+#ifndef sieve_H
+#define sieve_H
 
 #include <stdlib.h>
 #include <ostream>
 #include <vector>
 
 // types: classes, enums, typedefs, namespaces
-using std::vector;
 
-class istream;
+using std::ostream;
+using std::string;
+using std::vector;
 
 // variables: consts, statics, exported variables (declared extern elsewhere)
 // local forward function declarations
@@ -40,26 +41,28 @@ class sieve {
 public:
 
   sieve(const uint64_t& limit);
-  // Constructor, calcualtes the 
+  // Constructor, calculates the vector of primes
 
   ~sieve();
   // Destructor
 
-  const uint64_t& count();
+  const uint64_t& count() const;
   // returns the number of primes
   // Precondition: m_calculated
 
   void print_numbers() const;
-  // prints out the primes bellow m_limit to std output
+  // prints out the primes bellow m_limit to std::cout
   // Precondition: m_calculated
 
-  void write_file(const std::string& file_name) const;
+  void write_file(const string& file_name) const;
   // Writes a file with the primes bellow m_limit
   // Precondition: m_calculated
 
 private:
 
   // friends
+  friend class utest_sieve;
+  
   // functions
   sieve();
   // Prohibited default constructor
@@ -73,16 +76,9 @@ private:
   void calculate();
   // Calculates the primes
 
-  void print_numbers_stream(std::ostream& stream) const;
+  void print_numbers_stream(ostream& stream) const;
   // prints out the primes bellow m_limit to the stream
   // Precondition: m_calculated
-
-  const char convert_to_text(const int& to_convert) const;
-  // converts an integer into a character of ascii value 33 above it's value to
-  // eliminate whitespace characters
-
-  const int convert_from_text(const char& c) const;
-  // reverse convert_to_text
 
   // variables
   vector<bool> m_primes;
