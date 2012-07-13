@@ -75,13 +75,7 @@ int main(int num_arguments, char* arguments[])
   cin >> limit;
   cerr << endl;
 
-  #include <time.h>
-  clock_t t_start = clock();
-
   sieve finder(limit);
-  std::cout << "run time: " << (clock() - t_start)/CLOCKS_PER_SEC
-            << " seconds " << (clock() - t_start) << " microseconds"
-            << std::endl;
   cerr << "Sieve of Eratosthenes array calculated." << endl;
   if (write) {
     // write to the given file
