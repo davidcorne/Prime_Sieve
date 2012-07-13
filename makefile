@@ -19,6 +19,14 @@ utest: $(UTEST).exe
 $(UTEST).exe: $(UTEST).cpp $(SOURCE).o
 	$(CC) $(UTEST).cpp -o $(UTEST).exe $(SOURCE).o 
 
+commit: clean
+	@git add *; \
+	echo "Name this commit"; \
+	read name; \
+	git commit -m "$$name"; \
+	git remote add origin ; \
+	git push -u origin master
+
 clean: FRC
 # clean the folder for push back to git
 	rm -f *.o *.lib *.exe *.stackdump *~ \#*\#
