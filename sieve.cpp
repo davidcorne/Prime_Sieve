@@ -22,7 +22,7 @@ using std::filebuf;
 // local forward function declarations
 
 //=============================================================================
-sieve::sieve(const uint64_t& limit)
+sieve::sieve(const LARGE_INT& limit)
 //
 //D Constructor
 //
@@ -53,12 +53,12 @@ void sieve::calculate()
   m_primes[1] = 0;
   m_primes[2] = 1;
 
-  uint64_t limit_sqrt = static_cast<int>(sqrt(m_limit));
-  uint64_t current = 2;
+  LARGE_INT limit_sqrt = static_cast<int>(sqrt(m_limit));
+  LARGE_INT current = 2;
   while (current <= limit_sqrt) {
     // if it's prime then eliminate the multiples of it
     if (m_primes[current]) {
-      uint64_t multiple = 2;
+      LARGE_INT multiple = 2;
       while (multiple * current < m_limit) {
         m_primes[multiple * current] = 0;
         ++multiple;
@@ -68,14 +68,14 @@ void sieve::calculate()
   }
   // now count the primes
   m_count = 0;
-  for (uint64_t i = 1; i < m_limit; ++i) {
+  for (LARGE_INT i = 1; i < m_limit; ++i) {
     if (m_primes[i]) ++m_count;
   }
   m_calculated = true;
 }
 
 //=============================================================================
-const uint64_t& sieve::count() const
+const LARGE_INT& sieve::count() const
 //
 //D return how many primes there are less than limit
 //
@@ -101,7 +101,7 @@ void sieve::print_numbers_stream(ostream& stream) const
 //
 {
   assert(m_calculated);
-  for (uint64_t i = 1; i < m_limit; ++i) {
+  for (LARGE_INT i = 1; i < m_limit; ++i) {
     if (m_primes[i]) {
       // write out the actual number which is prime
       stream << i << endl;

@@ -14,7 +14,7 @@ $(SOURCE).o: $(SOURCE).cpp $(SOURCE).h
 
 utest: $(UTEST).exe
 	@echo ""
-	@$(UTEST).exe
+	@./$(UTEST).exe
 
 $(UTEST).exe: $(UTEST).cpp $(SOURCE).o
 	$(CC) $(UTEST).cpp -o $(UTEST).exe $(SOURCE).o 

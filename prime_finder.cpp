@@ -1,8 +1,5 @@
 //=============================================================================
-//D <One line description>
-//
-// <Full description.>
-//
+//D The app that runs a (command line) prime finder
 
 #include "sieve.h"
 
@@ -45,7 +42,7 @@ int main(int num_arguments, char* arguments[])
 //
 {
   // iterate over command line options
-  uint64_t limit = 0;
+  LARGE_INT limit = 0;
   string file = "";
   bool write = false;
   for (int i = 1; i < num_arguments; ++i) {
@@ -85,7 +82,7 @@ int main(int num_arguments, char* arguments[])
     finder.write_file(file);
     cout << file << " written." << endl;
   } else {
-    // finder.print_numbers();
+    finder.print_numbers();
   }
   
   return 0;

@@ -23,7 +23,8 @@
 #ifndef sieve_H
 #define sieve_H
 
-#include <stdlib.h>
+#include "large_int.h"
+
 #include <ostream>
 #include <vector>
 
@@ -40,13 +41,13 @@ using std::vector;
 class sieve {
 public:
 
-  sieve(const uint64_t& limit);
+  sieve(const LARGE_INT& limit);
   // Constructor, calculates the vector of primes
 
   ~sieve();
   // Destructor
 
-  const uint64_t& count() const;
+  const LARGE_INT& count() const;
   // returns the number of primes
   // Precondition: m_calculated
 
@@ -83,8 +84,8 @@ private:
   // variables
   vector<bool> m_primes;
   bool m_calculated;
-  uint64_t m_count;
-  uint64_t m_limit;
+  LARGE_INT m_count;
+  LARGE_INT m_limit;
 
 };
 
