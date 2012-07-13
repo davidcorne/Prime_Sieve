@@ -51,6 +51,11 @@ public:
   // returns the number of primes
   // Precondition: m_calculated
 
+  bool is_prime(const LARGE_INT& prime) const;
+  // returns if the given number is prime
+  // Precondition: m_calculated
+  // Precondition: prime < m_limit
+
   void print_numbers() const;
   // prints out the primes bellow m_limit to std::cout
   // Precondition: m_calculated

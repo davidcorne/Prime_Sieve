@@ -9,7 +9,7 @@ $(EXE).exe: $(EXE).cpp $(SOURCE).o
 	$(CC) -c $(EXE).cpp
 	$(CC) -o $(EXE).exe $(SOURCE).o $(EXE).o 
 
-$(SOURCE).o: $(SOURCE).cpp $(SOURCE).h
+$(SOURCE).o: $(SOURCE).cpp $(SOURCE).h large_int.h
 	$(CC) -c $<
 
 utest: $(UTEST).exe

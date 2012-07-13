@@ -1,0 +1,16 @@
+This project is a cross platform command line application for finding prime 
+numbers. It is an implementation of the Sieve of Eratosthene method of finding 
+primes, more details can be found here: 
+http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
+This is written in C++ using a vector<bool> to store the primes. This is 
+because vector<bool> uses less memory than other containers as it is specilised
+so that each bool is stored in only a bit. This means this class can calculate 
+higher primes than if, for example, a vector<int> was used.
+
+Large limits have also been used so that more primes can be calculated, so that
+this is portable large_int.h defines the largest unsigned integer that can be 
+used and defines LARGE_INT to be that.
+
+Under a speed test the 50,847,534 primes below 1,000,000,000 were calculated in
+176 second on a AMD Athlon(tm) II X4 605e Processor × 4 with 2.7 GiB of RAM.

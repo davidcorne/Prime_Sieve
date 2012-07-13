@@ -122,3 +122,15 @@ void sieve::write_file(const string& file_name) const
   print_numbers_stream(os);
   fb.close();
 }
+
+//=============================================================================
+bool sieve::is_prime(const LARGE_INT& prime) const
+//
+//D returns whether prime is prime
+//
+{
+  assert(m_calculated);
+  assert(prime < m_limit);
+  return m_primes[prime];
+}
+

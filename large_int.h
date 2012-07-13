@@ -1,8 +1,8 @@
-#include <stdlib.h>
+#include <stdint.h>
 
 // give back the correct large unsigned integer for 32/64 bit
 #if INTPTR_MAX == INT32_MAX
-#define LARGE_INT unsigned long long int
+#define LARGE_INT uint32_t
 #elif INTPTR_MAX == INT64_MAX
 #define LARGE_INT uint64_t
 #else

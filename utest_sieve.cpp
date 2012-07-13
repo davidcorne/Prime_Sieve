@@ -85,7 +85,19 @@ private:
       ss << small_primes[i];
       string msg = ss.str();
       msg += " is prime";
-      utest(primes.m_primes[small_primes[i]], msg);
+      utest(primes.is_prime(small_primes[i]), msg);
+    }
+    // now test some non-primes, for simplictiy on check multiples of 2, 3, 5
+    // and 7
+    for (int i = 8; i < 100; ++i) {
+      if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+        // these entries should be false as they are not prime
+        stringstream ss;
+        ss << i;
+        string msg = ss.str();
+        msg += " is not prime";
+        utest(!primes.is_prime(i), msg);
+      }
     }
   }
 
@@ -105,7 +117,7 @@ private:
         stringstream convert(line);
         convert >> result;
         string message = line + " is in the file";
-        utest(primes.m_primes[result], message);
+        utest(primes.is_prime(result), message);
       }
       prime_file.close();
     }
