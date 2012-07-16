@@ -27,6 +27,14 @@ prime::prime(const LARGE_INT& limit)
 }  
 
 //=============================================================================
+prime::~prime()
+//
+//D Destructor
+//
+{
+}  
+
+//=============================================================================
 const LARGE_INT& prime::count() const
 //
 //D return how many primes there are less than limit
