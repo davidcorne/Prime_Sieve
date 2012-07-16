@@ -1,9 +1,13 @@
 This project is a cross platform command line application for finding prime 
-numbers. It is an implementation of the Sieve of Eratosthene method of finding 
-primes, more details can be found here: 
+numbers. The sieve file is an implementation of the Sieve of Eratosthene method
+of finding primes, more details can be found here: 
 http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+The naive class uses a division method by trying to divide the number in 
+question by all the primes lower than it. This uses less storage data as you 
+only need to store the odd numbers. This is however slower than the sieve 
+method.
 
-This is written in C++ using a vector<bool> to store the primes. This is 
+Ther are written in C++ using a vector<bool> to store the primes. This is 
 because vector<bool> uses less memory than other containers as it is specilised
 so that each bool is stored in only a bit. This means that this class can 
 calculate higher primes than if, for example, a vector<int> was used.
