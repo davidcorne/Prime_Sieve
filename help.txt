@@ -1,0 +1,18 @@
+Usage: prime_finder.exe <options>
+
+This finds the primes bellow a specified limit. On running you will be asked
+what limit you would like to set.
+
+The default behaviour is for the executable is to print all the primes under 
+the given number to standard output.
+
+Note: This uses the sieve of Eratosthenes Method and is known to work for
+      calculating all the primes under 3,000,000,000. Also for large primes it 
+      is better to input them when prompted rather than as an argument due to 
+      implicit conversion to 32 bit long rather than 64 bit.
+
+Options:
+
+-f <file-name>     Writes the output to a given file name.
+?, -?, -h, /?, /h, Display this message.
+-help, --help

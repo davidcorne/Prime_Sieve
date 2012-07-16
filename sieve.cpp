@@ -53,7 +53,7 @@ void sieve::calculate()
   m_primes[1] = 0;
   m_primes[2] = 1;
 
-  LARGE_INT limit_sqrt = static_cast<int>(sqrt(m_limit));
+  LARGE_INT limit_sqrt = static_cast<LARGE_INT>(sqrt(m_limit));
   LARGE_INT current = 2;
   while (current <= limit_sqrt) {
     // if it's prime then eliminate the multiples of it

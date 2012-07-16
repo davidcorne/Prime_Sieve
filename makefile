@@ -1,25 +1,37 @@
-SOURCE = sieve
+OBJECTS = sieve.o naive.o prime.o
+LIB = prime.lib
 EXE = prime_finder
 
-UTEST = utest_$(SOURCE)
+UTEST = utest_primes
 CC = g++
 CC_OPTIONS = 
 
-$(EXE).exe: $(EXE).cpp $(SOURCE).o
+$(EXE).exe: $(EXE).cpp $(OBJECTS) $(LIB)
 	$(CC) -c $(EXE).cpp
-	$(CC) -o $(EXE).exe $(SOURCE).o $(EXE).o 
+	$(CC) -o $(EXE).exe -L$(LIB) $(EXE).o
 
-$(SOURCE).o: $(SOURCE).cpp $(SOURCE).h large_int.h
-	$(CC) -c $<
+$(LIB): $(OBJECTS)
+	ar ruvs $(LIB) $(OBJECTS)
+
+naive.o: naive.cpp naive.h prime.o large_int.h sieve.o
+	$(CC) -c naive.cpp
+
+sieve.o: sieve.cpp sieve.h prime.o large_int.h
+	$(CC) -c sieve.cpp
+
+prime.o: prime.cpp prime.h large_int.h
+	$(CC) -c prime.cpp
+
 
 utest: $(UTEST).exe
 	@echo ""
 	@./$(UTEST).exe
 
-$(UTEST).exe: $(UTEST).cpp $(SOURCE).o
-	$(CC) $(UTEST).cpp -o $(UTEST).exe $(SOURCE).o 
+$(UTEST).exe: $(UTEST).cpp $(OBJECTS)
+	$(CC) $(UTEST).cpp -o $(UTEST).exe $(OBJECTS)
 
 commit: clean
+# new git commit, doesn't work through cygwin
 	@git add *; \
 	echo "Name this commit"; \
 	read name; \
@@ -27,7 +39,7 @@ commit: clean
 	git push -u origin master
 
 clean: FRC
-# clean the folder for push back to git
+# clean the folder for push back to git/neatness
 	rm -f *.o *.lib *.exe *.stackdump *~ \#*\#
 
 FRC:

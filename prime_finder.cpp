@@ -2,6 +2,7 @@
 //D The app that runs a (command line) prime finder
 
 #include "sieve.h"
+#include "naive.h"
 
 #include <fstream>
 #include <iostream>
@@ -75,7 +76,7 @@ int main(int num_arguments, char* arguments[])
   cin >> limit;
   cerr << endl;
 
-  sieve finder(limit);
+  naive finder(limit);
   cerr << "Sieve of Eratosthenes array calculated." << endl;
   if (write) {
     // write to the given file

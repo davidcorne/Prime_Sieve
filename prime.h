@@ -1,27 +1,10 @@
 //=============================================================================
-// Implementation of the Sieve of Eratosthenes to find primes.
-//
-// Algorithm:
-//
-//  1) Create a list of consecutive integers from 2 to n: (2, 3, 4, ..., n).
-//  2) Initially, let p equal 2, the first prime number.
-//  3) Starting from p, count up in increments of p and mark each of these
-//     numbers greater than p itself in the list. These numbers will be 2p,
-//     3p, 4p, etc.; note that some of them may have already been marked.
-//  4) Find the first number greater than p in the list that is not marked. If
-//     there was no such number, stop. Otherwise, let p now equal this number
-//     (which is the next prime), and repeat from step 3.
-//
-// When the algorithm terminates, all the numbers in the list that are not
-// marked are prime.
-//
-// Note: due to the size of some numbers most places ints would be used long
-// unsigned 64 bit integers are used instead.
+// abstract base class for some prime finding functionality
 //
 //=============================================================================
 
-#ifndef sieve_H
-#define sieve_H
+#ifndef prime_H
+#define prime_H
 
 #include "large_int.h"
 
@@ -38,20 +21,20 @@ using std::vector;
 // local forward function declarations
 
 //=============================================================================
-class sieve {
+class prime {
 public:
 
-  sieve(const LARGE_INT& limit);
-  // Constructor, calculates the vector of primes
-
-  ~sieve();
+  prime(const LARGE_INT& limit);
+  // Constructor
+  
+  virtual ~prime() = 0;
   // Destructor
 
   const LARGE_INT& count() const;
   // returns the number of primes
   // Precondition: m_calculated
 
-  bool is_prime(const LARGE_INT& prime) const;
+  virtual bool is_prime(const LARGE_INT& prime) const = 0;
   // returns if the given number is prime
   // Precondition: m_calculated
   // Precondition: prime < m_limit
@@ -64,27 +47,26 @@ public:
   // Writes a file with the primes bellow m_limit
   // Precondition: m_calculated
 
-private:
+protected:
 
   // functions
-  sieve();
+  prime();
   // Prohibited default constructor
 
-  sieve(const sieve&);
+  prime(const prime&);
   // Prohibited copy constructor
 
-  void operator=(const sieve&);
+  void operator=(const prime&);
   // Prohibited assignment operator
 
-  void calculate();
+  virtual void calculate() = 0;
   // Calculates the primes
 
-  void print_numbers_stream(ostream& stream) const;
+  virtual void print_numbers_stream(ostream& stream) const = 0;
   // prints out the primes bellow m_limit to the stream
   // Precondition: m_calculated
 
   // variables
-  vector<bool> m_primes;
   bool m_calculated;
   LARGE_INT m_count;
   LARGE_INT m_limit;
