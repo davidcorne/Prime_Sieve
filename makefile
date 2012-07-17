@@ -9,6 +9,7 @@ CC_OPTIONS =
 $(EXE).exe: $(EXE).cpp $(OBJECTS) $(LIB)
 	$(CC) -c $(EXE).cpp
 	$(CC) -o $(EXE).exe $(EXE).o $(LIB)
+	@strip $(EXE).exe
 
 $(LIB): $(OBJECTS)
 	ar ruvs $(LIB) $(OBJECTS)
