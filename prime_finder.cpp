@@ -6,6 +6,8 @@
 
 #include <fstream>
 #include <iostream>
+#include <time.h>
+
 
 // types: classes, enums, typedefs, namespaces
 
@@ -64,6 +66,7 @@ int main(int num_arguments, char* arguments[])
         file = arguments[i+1];
         ++i;
 
+        
       } else {
         cerr << "Unknown option" << endl;
         print_help(arguments[0]);
@@ -75,9 +78,24 @@ int main(int num_arguments, char* arguments[])
   // output as error in case you are piping the output to a file
   cin >> limit;
   cerr << endl;
+  clock_t t_start = clock();
+  naive n(limit);
+  cout << "Naive: ";
+  cout << "run time: " << (clock() - t_start)/CLOCKS_PER_SEC
+       << " seconds " << (clock() - t_start) << " microseconds"
+       << endl;
 
+  t_start = clock();
+  sieve s(limit);
+  cout << "Sieve: ";
+  cout << "run time: " << (clock() - t_start)/CLOCKS_PER_SEC
+       << " seconds " << (clock() - t_start) << " microseconds"
+       << endl;
+
+  return 0;
+  
   naive finder(limit);
-  cerr << "Sieve of Eratosthenes array calculated." << endl;
+  cerr << "Prime array calculated." << endl;
   if (write) {
     // write to the given file
     finder.write_file(file);

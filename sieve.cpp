@@ -6,8 +6,6 @@
 
 #include "sieve.h"
 #include <assert.h> // use asserts
-#include <fstream>
-#include <iostream>
 #include <math.h>
 
 // types: classes, enums, typedefs
@@ -63,7 +61,9 @@ void sieve::calculate()
   // now count the primes
   m_count = 0;
   for (LARGE_INT i = 1; i < m_limit; ++i) {
-    if (m_primes[i]) ++m_count;
+    if (m_primes[i]) {
+      ++m_count;
+    }
   }
   m_calculated = true;
 }

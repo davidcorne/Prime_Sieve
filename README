@@ -1,13 +1,13 @@
 This project is a cross platform command line application for finding prime 
 numbers. The sieve file is an implementation of the Sieve of Eratosthene method
-of finding primes, more details can be found here: 
+of finding primes, more details can be found here: 
 http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 The naive class uses a division method by trying to divide the number in 
 question by all the primes lower than it. This uses less storage data as you 
 only need to store the odd numbers. This is however slower than the sieve 
 method.
 
-Ther are written in C++ using a vector<bool> to store the primes. This is 
+They are written in C++ using a vector<bool> to store the primes. This is 
 because vector<bool> uses less memory than other containers as it is specilised
 so that each bool is stored in only a bit. This means that this class can 
 calculate higher primes than if, for example, a vector<int> was used.
@@ -18,3 +18,8 @@ used and defines LARGE_INT as the largest type of integer.
 
 Under a speed test the 50,847,534 primes below 1,000,000,000 were calculated in
 176 seconds on a AMD Athlon(tm) II X4 605e Processor × 4 with 2.7 GiB of RAM.
+
+In a speed comparison test for a limit of 10,000,000
+
+Naive: run time: 11 seconds 11122 microseconds
+Sieve: run time: 1 seconds 1170 microseconds

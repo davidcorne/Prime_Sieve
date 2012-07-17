@@ -13,7 +13,7 @@ $(EXE).exe: $(EXE).cpp $(OBJECTS) $(LIB)
 $(LIB): $(OBJECTS)
 	ar ruvs $(LIB) $(OBJECTS)
 
-naive.o: naive.cpp naive.h prime.o large_int.h sieve.o
+naive.o: naive.cpp naive.h prime.o large_int.h
 	$(CC) -c naive.cpp
 
 sieve.o: sieve.cpp sieve.h prime.o large_int.h
