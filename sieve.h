@@ -23,10 +23,7 @@
 #ifndef sieve_H
 #define sieve_H
 
-#include "large_int.h"
-
-#include <ostream>
-#include <vector>
+#include "prime.h"
 
 // types: classes, enums, typedefs, namespaces
 
@@ -38,7 +35,7 @@ using std::vector;
 // local forward function declarations
 
 //=============================================================================
-class sieve {
+class sieve : public prime {
 public:
 
   sieve(const LARGE_INT& limit);
@@ -47,23 +44,11 @@ public:
   ~sieve();
   // Destructor
 
-  const LARGE_INT& count() const;
-  // returns the number of primes
-  // Precondition: m_calculated
-
   bool is_prime(const LARGE_INT& prime) const;
   // returns if the given number is prime
   // Precondition: m_calculated
   // Precondition: prime < m_limit
-
-  void print_numbers() const;
-  // prints out the primes bellow m_limit to std::cout
-  // Precondition: m_calculated
-
-  void write_file(const string& file_name) const;
-  // Writes a file with the primes bellow m_limit
-  // Precondition: m_calculated
-
+
 private:
 
   // functions
@@ -85,9 +70,6 @@ private:
 
   // variables
   vector<bool> m_primes;
-  bool m_calculated;
-  LARGE_INT m_count;
-  LARGE_INT m_limit;
 
 };
 

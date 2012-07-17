@@ -12,11 +12,7 @@
 
 // types: classes, enums, typedefs
 // only use what we need from standard library
-using std::cerr;
-using std::cin;
-using std::cout;
 using std::endl;
-using std::filebuf;
 
 // variables: consts, statics, exported variables (declared extern elsewhere)
 // local forward function declarations
@@ -26,10 +22,8 @@ sieve::sieve(const LARGE_INT& limit)
 //
 //D Constructor
 //
-  : m_count(-1), // 0 is a valid value for m_count so use something silly
-    m_limit(limit),
-    m_primes(limit, true), // initialise all the bits to true
-    m_calculated(false)
+  : prime(limit),
+    m_primes(limit, true) // initialise all the bits to true
 {
   calculate();
 }
@@ -75,26 +69,6 @@ void sieve::calculate()
 }
 
 //=============================================================================
-const LARGE_INT& sieve::count() const
-//
-//D return how many primes there are less than limit
-//
-{
-  assert(m_calculated);
-  return m_count;
-}
-
-//=============================================================================
-void sieve::print_numbers() const
-//
-//D print the primes less than limit
-//
-{
-  assert(m_calculated);
-  print_numbers_stream(cout);
-}
-
-//=============================================================================
 void sieve::print_numbers_stream(ostream& stream) const
 //
 //D print the primes less than limit
@@ -107,20 +81,6 @@ void sieve::print_numbers_stream(ostream& stream) const
       stream << i << endl;
     }
   }
-}
-
-//=============================================================================
-void sieve::write_file(const string& file_name) const
-//
-//D wrte primes to file_name
-//
-{
-  assert(m_calculated);
-  filebuf fb;
-  fb.open (file_name.c_str(), std::ios::out);
-  ostream os(&fb);
-  print_numbers_stream(os);
-  fb.close();
 }
 
 //=============================================================================
