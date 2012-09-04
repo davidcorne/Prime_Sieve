@@ -1,10 +1,11 @@
 # ignore emacs temporary files, but not unsaved files #*#
 *~
 
-# ignore objects libraries and executables
+# ignore objects libraries and executables and stack dumpes.
 *.o
 *.lib
 *.exe
+*.exe.stackdump
 
 # ignore the debug log
 debug.log
