@@ -3,8 +3,8 @@
 //
 //=============================================================================
 
-#ifndef prime_H
-#define prime_H
+#ifndef Prime_H
+#define Prime_H
 
 #include "PrimeSieve/LargeInt.h"
 
@@ -21,13 +21,13 @@ using std::vector;
 // local forward function declarations
 
 //=============================================================================
-class prime {
+class Prime {
 public:
 
-  prime(const LARGE_INT& limit);
+  Prime(const LARGE_INT& limit);
   // Constructor
   
-  virtual ~prime() = 0;
+  virtual ~Prime() = 0;
   // Destructor
 
   const LARGE_INT& count() const;
@@ -50,13 +50,13 @@ public:
 protected:
 
   // functions
-  prime();
+  Prime();
   // Prohibited default constructor
 
-  prime(const prime&);
+  Prime(const Prime&);
   // Prohibited copy constructor
 
-  void operator=(const prime&);
+  void operator=(const Prime&);
   // Prohibited assignment operator
 
   virtual void calculate() = 0;

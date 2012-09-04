@@ -39,6 +39,41 @@ void print_help(const string& location)
 }
 
 //=============================================================================
+LARGE_INT ask_for_limit()
+//
+//D Asks the user for the limit needed
+{
+  LARGE_INT limit = 0;
+  cerr << "Enter limit: ";
+  // output as error in case you are piping the output to a file
+  cin >> limit;
+  cerr << endl;
+  return limit;
+}
+
+//=============================================================================
+void compare_time()
+//
+//D Compares the run times between the naive and sieve algorithms.
+//
+{
+  LARGE_INT limit = ask_for_limit();
+  clock_t t_start = clock();
+  Naive n(limit);
+  cout << "Naive: ";
+  cout << "run time: " << (clock() - t_start)/CLOCKS_PER_SEC
+       << " seconds " << (clock() - t_start) << " microseconds"
+       << endl;
+
+  t_start = clock();
+  Sieve s(limit);
+  cout << "Sieve: ";
+  cout << "run time: " << (clock() - t_start)/CLOCKS_PER_SEC
+       << " seconds " << (clock() - t_start) << " microseconds"
+       << endl;
+}
+
+//=============================================================================
 int main(int num_arguments, char* arguments[])
 //
 //D The entry point and single function of this program
@@ -48,12 +83,17 @@ int main(int num_arguments, char* arguments[])
   LARGE_INT limit = 0;
   string file = "";
   bool write = false;
+  
   for (int i = 1; i < num_arguments; ++i) {
     string arg = string(arguments[i]);
     if (arg[0] == '-') {
       if (arg == "-h" || arg == "-help" || arg == "--help") {
         // help option
         print_help(arguments[0]);
+        return 0;
+
+      } else if (arg == "-c") {
+        compare_time();
         return 0;
 
       } else if (arg == "-f") {
@@ -73,27 +113,9 @@ int main(int num_arguments, char* arguments[])
       }
     }
   }
-  cerr << "Enter limit: ";
-  // output as error in case you are piping the output to a file
-  cin >> limit;
-  cerr << endl;
-  clock_t t_start = clock();
-  naive n(limit);
-  cout << "Naive: ";
-  cout << "run time: " << (clock() - t_start)/CLOCKS_PER_SEC
-       << " seconds " << (clock() - t_start) << " microseconds"
-       << endl;
-
-  t_start = clock();
-  sieve s(limit);
-  cout << "Sieve: ";
-  cout << "run time: " << (clock() - t_start)/CLOCKS_PER_SEC
-       << " seconds " << (clock() - t_start) << " microseconds"
-       << endl;
-
-  return 0;
   
-  naive finder(limit);
+  limit = ask_for_limit();
+  Sieve finder(limit);
   cerr << "Prime array calculated." << endl;
   if (write) {
     // write to the given file

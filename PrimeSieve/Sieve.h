@@ -20,8 +20,8 @@
 //
 //=============================================================================
 
-#ifndef sieve_H
-#define sieve_H
+#ifndef Sieve_H
+#define Sieve_H
 
 #include "PrimeSieve/Prime.h"
 
@@ -35,13 +35,13 @@ using std::vector;
 // local forward function declarations
 
 //=============================================================================
-class sieve : public prime {
+class Sieve : public Prime {
 public:
 
-  sieve(const LARGE_INT& limit);
+  Sieve(const LARGE_INT& limit);
   // Constructor, calculates the vector of primes
 
-  ~sieve();
+  ~Sieve();
   // Destructor
 
   bool is_prime(const LARGE_INT& prime) const;
@@ -52,13 +52,13 @@ public:
 private:
 
   // functions
-  sieve();
+  Sieve();
   // Prohibited default constructor
 
-  sieve(const sieve&);
+  Sieve(const Sieve&);
   // Prohibited copy constructor
 
-  void operator=(const sieve&);
+  void operator=(const Sieve&);
   // Prohibited assignment operator
 
   void calculate();

@@ -16,18 +16,18 @@ using std::endl;
 // local forward function declarations
 
 //=============================================================================
-sieve::sieve(const LARGE_INT& limit)
+Sieve::Sieve(const LARGE_INT& limit)
 //
 //D Constructor
 //
-  : prime(limit),
+  : Prime(limit),
     m_primes(limit, true) // initialise all the bits to true
 {
   calculate();
 }
 
 //=============================================================================
-sieve::~sieve()
+Sieve::~Sieve()
 //
 //D Destructor, nothing newed so nothing needs deletion
 //
@@ -35,7 +35,7 @@ sieve::~sieve()
 }
 
 //=============================================================================
-void sieve::calculate()
+void Sieve::calculate()
 //
 //D Calculates a vector bool of primes
 //
@@ -69,7 +69,7 @@ void sieve::calculate()
 }
 
 //=============================================================================
-void sieve::print_numbers_stream(ostream& stream) const
+void Sieve::print_numbers_stream(ostream& stream) const
 //
 //D print the primes less than limit
 //
@@ -84,7 +84,7 @@ void sieve::print_numbers_stream(ostream& stream) const
 }
 
 //=============================================================================
-bool sieve::is_prime(const LARGE_INT& prime) const
+bool Sieve::is_prime(const LARGE_INT& prime) const
 //
 //D returns whether prime is prime
 //

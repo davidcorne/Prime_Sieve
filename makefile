@@ -26,4 +26,5 @@ OBJECTS = obj/Sieve.o obj/Naive.o obj/Prime.o
 INCLUDES = -I. 
 
 include $(DROPBOX)/Coding/MakeFiles/cpp.mk
+#OP_FLAGS = -O2
 # override varaibles here

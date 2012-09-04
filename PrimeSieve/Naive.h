@@ -4,8 +4,8 @@
 //
 //=============================================================================
 
-#ifndef naive_H
-#define naive_H
+#ifndef Naive_H
+#define Naive_H
 
 #include "PrimeSieve/Prime.h"
 
@@ -18,13 +18,13 @@ using std::vector;
 // local forward function declarations
 
 //=============================================================================
-class naive : public prime {
+class Naive : public Prime {
 public:
 
-  naive(const LARGE_INT& limit);
+  Naive(const LARGE_INT& limit);
   // Constructor, calculates the vector of primes
 
-  ~naive();
+  ~Naive();
   // Destructor
 
   bool is_prime(const LARGE_INT& prime) const;
@@ -35,13 +35,13 @@ public:
 private:
 
   // functions
-  naive();
+  Naive();
   // Prohibited default constructor
 
-  naive(const naive&);
+  Naive(const Naive&);
   // Prohibited copy constructor
 
-  void operator=(const naive&);
+  void operator=(const Naive&);
   // Prohibited assignment operator
 
   void calculate();

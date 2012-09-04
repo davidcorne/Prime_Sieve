@@ -16,7 +16,7 @@ using std::filebuf;
 // local forward function declarations
 
 //=============================================================================
-prime::prime(const LARGE_INT& limit)
+Prime::Prime(const LARGE_INT& limit)
 //
 //D Constructor
 //
@@ -27,7 +27,7 @@ prime::prime(const LARGE_INT& limit)
 }  
 
 //=============================================================================
-prime::~prime()
+Prime::~Prime()
 //
 //D Destructor
 //
@@ -35,7 +35,7 @@ prime::~prime()
 }  
 
 //=============================================================================
-const LARGE_INT& prime::count() const
+const LARGE_INT& Prime::count() const
 //
 //D return how many primes there are less than limit
 //
@@ -45,7 +45,7 @@ const LARGE_INT& prime::count() const
 }
 
 //=============================================================================
-void prime::print_numbers() const
+void Prime::print_numbers() const
 //
 //D print the primes less than limit
 //
@@ -55,7 +55,7 @@ void prime::print_numbers() const
 }
 
 //=============================================================================
-void prime::write_file(const string& file_name) const
+void Prime::write_file(const string& file_name) const
 //
 //D write primes to file_name
 //

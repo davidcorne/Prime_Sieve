@@ -1,6 +1,6 @@
 Usage: prime_finder.exe <options>
 
-This finds the primes bellow a specified limit. On running you will be asked
+This finds the primes below a specified limit. On running you will be asked
 what limit you would like to set.
 
 The default behaviour is for the executable is to print all the primes under 
@@ -13,6 +13,8 @@ Note: This uses the sieve of Eratosthenes Method and is known to work for
 
 Options:
 
+-c                 Asks for a limit and runs the prime finder using all the 
+                   algorithms that are available.
 -f <file-name>     Writes the output to a given file name.
 ?, -?, -h, /?, /h, Display this message.
 -help, --help

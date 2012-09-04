@@ -129,10 +129,10 @@ int main(int num_arguments, char* arguments[])
 //
 {
   cout << "Testing naive implementation" << endl;
-  run_tests<naive>();
+  run_tests<Naive>();
 
   cout << "Testing sieve implementation" << endl;
-  run_tests<sieve>();
+  run_tests<Sieve>();
   
   return 0;
 }

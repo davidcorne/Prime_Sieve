@@ -15,19 +15,19 @@ using std::endl;
 // local forward function declarations
 
 //=============================================================================
-naive::naive(const LARGE_INT& limit)
+Naive::Naive(const LARGE_INT& limit)
 //
 //D Constructor
 //
 
-  : prime(limit),
+  : Prime(limit),
     m_primes(limit / 2, false)  // initialise all the bits to false
 {
   calculate();
 }
 
 //=============================================================================
-naive::~naive()
+Naive::~Naive()
 //
 //D Destructor, nothing newed so nothing needs deletion
 //
@@ -35,7 +35,7 @@ naive::~naive()
 }
 
 //=============================================================================
-void naive::calculate()
+void Naive::calculate()
 //
 //D Calculates a vector bool of primes
 //
@@ -73,7 +73,7 @@ void naive::calculate()
 }
 
 //=============================================================================
-void naive::print_numbers_stream(ostream& stream) const
+void Naive::print_numbers_stream(ostream& stream) const
 //
 //D print the primes less than limit
 //
@@ -91,7 +91,7 @@ void naive::print_numbers_stream(ostream& stream) const
 }
 
 //=============================================================================
-bool naive::is_prime(const LARGE_INT& prime) const
+bool Naive::is_prime(const LARGE_INT& prime) const
 //
 //D returns whether prime is prime
 //
