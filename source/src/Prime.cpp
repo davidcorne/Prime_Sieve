@@ -2,7 +2,7 @@
 //D generates primes, abstract class to be overridden
 //
 
-#include "prime.h"
+#include "PrimeSieve/Prime.h"
 #include <assert.h> // use asserts
 #include <fstream>
 #include <iostream>
@@ -57,7 +57,7 @@ void prime::print_numbers() const
 //=============================================================================
 void prime::write_file(const string& file_name) const
 //
-//D wrte primes to file_name
+//D write primes to file_name
 //
 {
   assert(m_calculated);

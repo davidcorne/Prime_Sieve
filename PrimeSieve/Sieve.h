@@ -23,7 +23,7 @@
 #ifndef sieve_H
 #define sieve_H
 
-#include "prime.h"
+#include "PrimeSieve/Prime.h"
 
 // types: classes, enums, typedefs, namespaces
 

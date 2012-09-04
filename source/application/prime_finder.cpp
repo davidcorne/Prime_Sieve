@@ -1,8 +1,8 @@
 //=============================================================================
 //D The app that runs a (command line) prime finder
 
-#include "sieve.h"
-#include "naive.h"
+#include "PrimeSieve/sieve.h"
+#include "PrimeSieve/naive.h"
 
 #include <fstream>
 #include <iostream>
@@ -66,7 +66,6 @@ int main(int num_arguments, char* arguments[])
         file = arguments[i+1];
         ++i;
 
-        
       } else {
         cerr << "Unknown option" << endl;
         print_help(arguments[0]);

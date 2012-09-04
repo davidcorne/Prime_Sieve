@@ -7,7 +7,7 @@
 #ifndef naive_H
 #define naive_H
 
-#include "prime.h"
+#include "PrimeSieve/Prime.h"
 
 // types: classes, enums, typedefs, namespaces
 

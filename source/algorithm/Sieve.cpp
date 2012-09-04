@@ -4,7 +4,7 @@
 // a prime sieve based on the Sieve of Eratosthenes, see header for more detail
 //
 
-#include "sieve.h"
+#include "PrimeSieve/Sieve.h"
 #include <assert.h> // use asserts
 #include <math.h>
 

@@ -6,7 +6,7 @@
 #ifndef prime_H
 #define prime_H
 
-#include "large_int.h"
+#include "PrimeSieve/LargeInt.h"
 
 #include <ostream>
 #include <vector>
@@ -67,9 +67,9 @@ protected:
   // Precondition: m_calculated
 
   // variables
-  bool m_calculated;
   LARGE_INT m_count;
   LARGE_INT m_limit;
+  bool m_calculated;
 
 };
 

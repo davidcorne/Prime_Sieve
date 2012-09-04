@@ -2,7 +2,7 @@
 //D generates primes
 //
 
-#include "naive.h"
+#include "PrimeSieve/Naive.h"
 #include <assert.h> // use asserts
 #include <iostream>
 #include <math.h>

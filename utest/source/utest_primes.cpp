@@ -1,8 +1,8 @@
 //=============================================================================
 //D unit test for the prime finding classes I have with the same API.
 
-#include "sieve.h"
-#include "naive.h"
+#include "PrimeSieve/Sieve.h"
+#include "PrimeSieve/Naive.h"
 
 #include <assert.h> // use asserts
 #include <iostream>
@@ -65,7 +65,6 @@ void test_correct_primes() {
   int limit = 100;
 
   PRIME_FINDER primes(limit);
-  bool ok = true;
   int small_primes[25] =
     {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97};
   for (int i = 0; i < 25; ++i) {
