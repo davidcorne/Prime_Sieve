@@ -44,10 +44,10 @@ LARGE_UINT ask_for_limit()
 //D Asks the user for the limit needed
 {
   LARGE_UINT limit = 0;
-  // <nnn> cerr << "Enter limit: ";
+  cerr << "Enter limit: ";
   // output as error in case you are piping the output to a file
   cin >> limit;
-  // <nnn> cerr << endl;
+  cerr << endl;
   return limit;
 }
 
