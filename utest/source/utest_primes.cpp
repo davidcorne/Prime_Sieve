@@ -52,6 +52,7 @@ void test_prime_count() {
   cout << endl;
   test_prime_count_limit<PRIME_FINDER>(100, 25);
   test_prime_count_limit<PRIME_FINDER>(1000, 168);
+  test_prime_count_limit<PRIME_FINDER>(10000, 1229);
   test_prime_count_limit<PRIME_FINDER>(100000, 9592);
   test_prime_count_limit<PRIME_FINDER>(1000000, 78498);
 }
