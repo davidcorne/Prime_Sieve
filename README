@@ -3,6 +3,17 @@ numbers.
 
 The executable usage is found in exe/help.txt or by running prime_finder.exe -h
 
+Building the executable:
+
+This is built using GNU make. To build it you need a copy of my "master" 
+makefiles (to save code replication). The two you need are cpp.mk and 
+cpp_utest.mk (only needed to build the unit tests). These can be found in the 
+following repository: https://github.com/davidcorne/MakeFiles
+
+Other than that building should just be a case of typing make at the project 
+directory and an executable will be built in the exe directory. Although it
+will have the extension .exe if it is build on linux it will run on linux.
+
 The two alrogithms available:
 
 The sieve file is an implementation of the Sieve of Eratosthene method
@@ -29,10 +40,14 @@ used and defines LARGE_INT as the largest type of integer.
 
 Speed:
 
-Under a speed test the 50,847,534 primes below 1,000,000,000 were calculated in
-176 seconds on a AMD Athlon(tm) II X4 605e Processor × 4 with 2.7 GiB of RAM.
+The following tests were run on a desktop with a AMD Athlon(tm) II X4 605e 
+Processor × 4 and 2.7 GiB of RAM, running 64 bit Windows 7.
 
-In a speed comparison test for a limit of 10,000,000
+For limits under 100,000 both algorithms registered 0.00 seconds.
 
-Naive: run time: 11 seconds 11122 microseconds
-Sieve: run time: 1 seconds 1170 microseconds
+Limit: 100,000
+Limit: 1,000,000
+Limit: 10,000,000
+Limit: 100,000,000
+Limit: 1,000,000,000
+

@@ -1,8 +1,8 @@
 //=============================================================================
 //D The app that runs a (command line) prime finder
 
-#include "PrimeSieve/sieve.h"
-#include "PrimeSieve/naive.h"
+#include "PrimeSieve/Sieve.h"
+#include "PrimeSieve/Naive.h"
 
 #include <fstream>
 #include <iostream>
@@ -42,6 +42,7 @@ void print_help(const string& location)
 LARGE_UINT ask_for_limit()
 //
 //D Asks the user for the limit needed
+//
 {
   LARGE_UINT limit = 0;
   cerr << "Enter limit: ";
@@ -111,6 +112,16 @@ int main(int num_arguments, char* arguments[])
         file = arguments[i+1];
         ++i;
 
+      } else if (arg == "-b") {
+        write = true;
+        // write to a file option
+        if (i + 1 == num_arguments) {
+          cerr << "Need a file name" << endl;
+          return 0;
+        }
+        file = arguments[i+1];
+        ++i;
+
       } else {
         cerr << "Unknown option" << endl;
         print_help(arguments[0]);
@@ -123,7 +134,6 @@ int main(int num_arguments, char* arguments[])
   Sieve finder(limit);
   cerr << "Prime array calculated." << endl;
   if (write) {
-    // write to the given file
     finder.write_file(file);
     cout << file << " written." << endl;
   } else {
