@@ -21,13 +21,13 @@ using std::vector;
 class Naive : public Prime {
 public:
 
-  Naive(const LARGE_INT& limit);
+  Naive(const LARGE_UINT& limit);
   // Constructor, calculates the vector of primes
 
   ~Naive();
   // Destructor
 
-  bool is_prime(const LARGE_INT& prime) const;
+  bool is_prime(const LARGE_UINT& prime) const;
   // returns if the given number is prime
   // Precondition: m_calculated
   // Precondition: prime < m_limit

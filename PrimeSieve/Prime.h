@@ -24,17 +24,17 @@ using std::vector;
 class Prime {
 public:
 
-  Prime(const LARGE_INT& limit);
+  Prime(const LARGE_UINT& limit);
   // Constructor
   
   virtual ~Prime() = 0;
   // Destructor
 
-  const LARGE_INT& count() const;
+  const LARGE_UINT& count() const;
   // returns the number of primes
   // Precondition: m_calculated
 
-  virtual bool is_prime(const LARGE_INT& prime) const = 0;
+  virtual bool is_prime(const LARGE_UINT& prime) const = 0;
   // returns if the given number is prime
   // Precondition: m_calculated
   // Precondition: prime < m_limit
@@ -67,8 +67,8 @@ protected:
   // Precondition: m_calculated
 
   // variables
-  LARGE_INT m_count;
-  LARGE_INT m_limit;
+  LARGE_UINT m_count;
+  LARGE_UINT m_limit;
   bool m_calculated;
 
 };

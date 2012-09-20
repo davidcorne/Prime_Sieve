@@ -16,7 +16,7 @@ using std::endl;
 // local forward function declarations
 
 //=============================================================================
-Sieve::Sieve(const LARGE_INT& limit)
+Sieve::Sieve(const LARGE_UINT& limit)
 //
 //D Constructor
 //
@@ -45,12 +45,12 @@ void Sieve::calculate()
   m_primes[1] = 0;
   m_primes[2] = 1;
 
-  LARGE_INT limit_sqrt = static_cast<LARGE_INT>(sqrt(m_limit));
-  LARGE_INT current = 2;
+  LARGE_UINT limit_sqrt = static_cast<LARGE_UINT>(sqrt(m_limit));
+  LARGE_UINT current = 2;
   while (current <= limit_sqrt) {
     // if it's prime then eliminate the multiples of it
     if (m_primes[current]) {
-      LARGE_INT multiple = 2;
+      LARGE_UINT multiple = 2;
       while (multiple * current < m_limit) {
         m_primes[multiple * current] = 0;
         ++multiple;
@@ -60,7 +60,7 @@ void Sieve::calculate()
   }
   // now count the primes
   m_count = 0;
-  for (LARGE_INT i = 1; i < m_limit; ++i) {
+  for (LARGE_UINT i = 1; i < m_limit; ++i) {
     if (m_primes[i]) {
       ++m_count;
     }
@@ -75,7 +75,7 @@ void Sieve::print_numbers_stream(ostream& stream) const
 //
 {
   assert(m_calculated);
-  for (LARGE_INT i = 1; i < m_limit; ++i) {
+  for (LARGE_UINT i = 1; i < m_limit; ++i) {
     if (m_primes[i]) {
       // write out the actual number which is prime
       stream << i << endl;
@@ -84,7 +84,7 @@ void Sieve::print_numbers_stream(ostream& stream) const
 }
 
 //=============================================================================
-bool Sieve::is_prime(const LARGE_INT& prime) const
+bool Sieve::is_prime(const LARGE_UINT& prime) const
 //
 //D returns whether prime is prime
 //

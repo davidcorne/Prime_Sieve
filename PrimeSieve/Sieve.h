@@ -38,13 +38,13 @@ using std::vector;
 class Sieve : public Prime {
 public:
 
-  Sieve(const LARGE_INT& limit);
+  Sieve(const LARGE_UINT& limit);
   // Constructor, calculates the vector of primes
 
   ~Sieve();
   // Destructor
 
-  bool is_prime(const LARGE_INT& prime) const;
+  bool is_prime(const LARGE_UINT& prime) const;
   // returns if the given number is prime
   // Precondition: m_calculated
   // Precondition: prime < m_limit

@@ -15,7 +15,7 @@ using std::endl;
 // local forward function declarations
 
 //=============================================================================
-Naive::Naive(const LARGE_INT& limit)
+Naive::Naive(const LARGE_UINT& limit)
 //
 //D Constructor
 //
@@ -46,13 +46,13 @@ void Naive::calculate()
     m_count = 1;
   }
   
-  for (LARGE_INT i = 3; i < m_limit; i += 2) {
-    LARGE_INT num_sqrt = static_cast<LARGE_INT>(sqrt(i));
-    LARGE_INT j = 0;
+  for (LARGE_UINT i = 3; i < m_limit; i += 2) {
+    LARGE_UINT num_sqrt = static_cast<LARGE_UINT>(sqrt(i));
+    LARGE_UINT j = 0;
     bool prime = true;
     while (j <= ((num_sqrt - 3) / 2)) {
       // divide by all the numbers
-      LARGE_INT number_to_divide_by = (2 * j) + 3;
+      LARGE_UINT number_to_divide_by = (2 * j) + 3;
       if (number_to_divide_by > num_sqrt) {
         // if you've not found factors by the square root you're never going to
         break;
@@ -82,7 +82,7 @@ void Naive::print_numbers_stream(ostream& stream) const
   if (m_limit >= 2) {
     stream << "2" << endl;
   }
-  for (LARGE_INT i = 0; i < m_primes.size(); ++i) {
+  for (LARGE_UINT i = 0; i < m_primes.size(); ++i) {
     if (m_primes[i]) {
       // write out the actual number which is prime
       stream << 2*i + 3 << endl;
@@ -91,7 +91,7 @@ void Naive::print_numbers_stream(ostream& stream) const
 }
 
 //=============================================================================
-bool Naive::is_prime(const LARGE_INT& prime) const
+bool Naive::is_prime(const LARGE_UINT& prime) const
 //
 //D returns whether prime is prime
 //

@@ -37,7 +37,7 @@ void utest(const bool test_value, const string& message)
 
 //=============================================================================
 template<typename PRIME_FINDER>
-void test_prime_count_limit(LARGE_INT limit, LARGE_INT expected_primes) {
+void test_prime_count_limit(LARGE_UINT limit, LARGE_UINT expected_primes) {
   PRIME_FINDER primes(limit);
   stringstream ss;
   ss << expected_primes << " primes below " << limit;

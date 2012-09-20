@@ -27,7 +27,7 @@ void print_help(const string& location)
 //
 {
   string file_location(location, 0, location.find_last_of('/'));
-  file_location.append("/help.txt");
+  file_location.append("/help_prime_finder.txt");
   ifstream file(file_location.c_str());
   if (file) {
     // print the buffer to standard output
@@ -39,15 +39,15 @@ void print_help(const string& location)
 }
 
 //=============================================================================
-LARGE_INT ask_for_limit()
+LARGE_UINT ask_for_limit()
 //
 //D Asks the user for the limit needed
 {
-  LARGE_INT limit = 0;
-  cerr << "Enter limit: ";
+  LARGE_UINT limit = 0;
+  // <nnn> cerr << "Enter limit: ";
   // output as error in case you are piping the output to a file
   cin >> limit;
-  cerr << endl;
+  // <nnn> cerr << endl;
   return limit;
 }
 
@@ -57,20 +57,25 @@ void compare_time()
 //D Compares the run times between the naive and sieve algorithms.
 //
 {
-  LARGE_INT limit = ask_for_limit();
-  clock_t t_start = clock();
+  LARGE_UINT limit = ask_for_limit();
+  
+  // clock() returns the number of clock ticks since the program started so
+  // constantly subtract it from itself
+  clock_t time_elapsed = clock();
   Naive n(limit);
-  cout << "Naive: ";
-  cout << "run time: " << (clock() - t_start)/CLOCKS_PER_SEC
-       << " seconds " << (clock() - t_start) << " microseconds"
-       << endl;
-
-  t_start = clock();
+  time_elapsed = clock() - time_elapsed;
+  cout << "Naive - ";
+  cout << "run time: " << ((float)time_elapsed) / CLOCKS_PER_SEC
+      << " seconds "
+      << endl;
+  
+  time_elapsed = clock();
   Sieve s(limit);
-  cout << "Sieve: ";
-  cout << "run time: " << (clock() - t_start)/CLOCKS_PER_SEC
-       << " seconds " << (clock() - t_start) << " microseconds"
-       << endl;
+  time_elapsed = clock() - time_elapsed;
+  cout << "Sieve - ";
+  cout << "run time: " << ((float)time_elapsed) / CLOCKS_PER_SEC
+      << " seconds "
+      << endl;
 }
 
 //=============================================================================
@@ -80,7 +85,7 @@ int main(int num_arguments, char* arguments[])
 //
 {
   // iterate over command line options
-  LARGE_INT limit = 0;
+  LARGE_UINT limit = 0;
   string file = "";
   bool write = false;
   
